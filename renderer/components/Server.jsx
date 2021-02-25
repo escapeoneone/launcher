@@ -45,11 +45,14 @@ class Server extends React.Component {
             players: { avaible: 0, online: 0 }
         };
 
-        setInterval(this.fetch.bind(this), 1000);
+        setInterval(this.fetch.bind(this), 5000);
 
         this.fetch();
     }
     fetch() {
+        this.setState({
+            progress: true
+        });
         util.status(this.state.serverData.url)
             .then((response) => {
                 this.setState({
